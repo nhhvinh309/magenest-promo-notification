@@ -1,0 +1,113 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<form xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Ui:etc/ui_configuration.xsd">
+    <argument name="data" xsi:type="array">
+        <item name="js_config" xsi:type="array">
+            <item name="provider" xsi:type="string">notification_notifications_form.notification_magenestnotification_listing_data_source</item>
+            <item name="deps" xsi:type="string">notification_notifications_form.notification_magenestnotification_listing_data_source</item>
+        </item>
+        <item name="label" xsi:type="string" translate="true">Notification Information</item>
+        <item name="config" xsi:type="array">
+            <item name="dataScope" xsi:type="string">data</item>
+            <item name="namespace" xsi:type="string">notification_notifications_form</item>
+        </item>
+        <item name="template" xsi:type="string">templates/form/collapsible</item>
+
+    </argument>
+    <settings>
+        <buttons>
+            <button name="save" class="Magenest\Notification\Block\Adminhtml\Button\SaveButton"/>
+            <button name="back">
+                <url path="*/*/" />
+                <class>back</class>
+                <label translate="true">Back</label>
+            </button>
+        </buttons>
+        <namespace>notification_notifications_form</namespace>
+        <dataScope>data</dataScope>
+        <deps>
+            <dep>notification_notifications_form.notification_magenestnotification_listing_data_source</dep>
+        </deps>
+    </settings>
+    <dataSource name="notification_magenestnotification_listing_data_source">
+        <argument name="data" xsi:type="array">
+            <item name="js_config" xsi:type="array">
+                <item name="component" xsi:type="string">Magento_Ui/js/form/provider</item>
+            </item>
+        </argument>
+        <settings>
+            <submitUrl path="notification/notifications/save" />
+        </settings>
+        <dataProvider class="Magenest\Notification\Model\DataProvider" name="notification_magenestnotification_listing_data_source">
+            <settings>
+                <requestFieldName>id</requestFieldName>
+                <primaryFieldName>entity_id</primaryFieldName>
+            </settings>
+        </dataProvider>
+
+    </dataSource>
+    <fieldset name="notification_details">
+        <argument name="data" xsi:type="array">
+            <item name="config" xsi:type="array">
+                <!--                <item name="collapsible" xsi:type="boolean">true</item>-->
+                <item name="label" xsi:type="string" translate="true">Customer Details</item>
+                <item name="sortOrder" xsi:type="number">20</item>
+            </item>
+        </argument>
+
+        <field name="name">
+            <argument name="data" xsi:type="array">
+                <item name="config" xsi:type="array">
+                    <item name="dataType" xsi:type="string">text</item>
+                    <item name="label" xsi:type="string" translate="true">Name</item>
+                    <item name="formElement" xsi:type="string">input</item>
+                    <item name="source" xsi:type="string">notification_details</item>
+                </item>
+            </argument>
+        </field>
+        <field name="short_description">
+            <argument name="data" xsi:type="array">
+                <item name="config" xsi:type="array">
+                    <item name="dataType" xsi:type="string">text</item>
+                    <item name="label" xsi:type="string" translate="true">Short Description</item>
+                    <item name="formElement" xsi:type="string">input</item>
+                    <item name="source" xsi:type="string">notification_details</item>
+                </item>
+            </argument>
+        </field>
+        <field name="redirect_url">
+            <argument name="data" xsi:type="array">
+                <item name="config" xsi:type="array">
+                    <item name="dataType" xsi:type="string">text</item>
+                    <item name="label" xsi:type="string" translate="true">Redirect Url</item>
+                    <item name="formElement" xsi:type="string">input</item>
+                    <item name="source" xsi:type="string">notification_details</item>
+                </item>
+            </argument>
+        </field>
+        <field name="status" formElement="select">
+            <settings>
+                <dataType>text</dataType>
+                <label translate="true">Status</label>
+                <dataScope>status</dataScope>
+            </settings>
+            <formElements>
+                <select>
+                    <settings>
+                        <options>
+                            <option name="1" xsi:type="array">
+                                <item name="value" xsi:type="string">enable</item>
+                                <item name="label" xsi:type="string">Enable</item>
+                            </option>
+                            <option name="2" xsi:type="array">
+                                <item name="value" xsi:type="string">disable</item>
+                                <item name="label" xsi:type="string">Disable</item>
+                            </option>
+                        </options>
+                        <caption translate="true">-- Please Select --</caption>
+                    </settings>
+                </select>
+            </formElements>
+        </field>
+    </fieldset>
+
+</form>

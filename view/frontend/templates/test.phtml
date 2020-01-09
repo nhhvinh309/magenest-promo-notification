@@ -1,0 +1,69 @@
+<?php
+$arrayData = $block->getNotification();
+?>
+<table>
+    <tr>
+        <th>Date</th>
+        <th>Name</th>
+        <th>Description</th>
+        <th>Action</th>
+    </tr>
+    <?php
+        if(!empty($arrayData))
+        {
+            foreach ($arrayData as $row) {
+                if ($row[0] == "viewed") {
+                    echo "<tr id=" . 'tr_white' . $row["entity_id"] . " style='background-color: white'>
+                    <td>" . $row["created_at"] . "</td>
+                    <td>" . $row["name"] . "</td>
+                    <td>" . $row["short_description"] . "</td>
+                   <td class='action'>
+                    <a href=" . $row["redirect_url"] . ">View Details</a> 
+                    <a href='#' id = " . 'delete' . $row["entity_id"] . ">Delete</a> </td>
+                  </tr>";
+                } else {
+                    echo "<tr id=" . 'tr_antiquewhite' . $row["entity_id"] . " style='background-color: antiquewhite'>
+                    <td>" . $row["created_at"] . "</td>
+                    <td>" . $row["name"] . "</td>
+                    <td>" . $row["short_description"] . "</td>
+                    <td class='action'>
+                        <a href=" . $row["redirect_url"] . ">View Details</a>
+                        <a href='#' id = " . 'maskasread' . $row["entity_id"] . ">Mask as Read </a>
+                        <a href='#' id = " . 'delete' . $row["entity_id"] . ">Delete</a>
+                    </td>
+                 </tr>";
+                }
+            }
+        }
+    ?>
+</table>
+<script>
+    require(['jquery'], function () {
+        jQuery(document).ready(function () {
+            jQuery(".action a").click(function (e) {
+                var tagID = e.delegateTarget.id;
+                var actionName = tagID.replace(/[0-9]/g, '');
+                var actionID = tagID.match(/\d+/)[0];
+                if(actionName == "maskasread"){
+                    jQuery("#" + tagID).remove();
+                    jQuery("#tr_antiquewhite" + actionID).css("background-color", "white");
+                }
+                if(actionName == "delete"){
+                    jQuery("#tr_antiquewhite" + actionID).remove();
+                    jQuery("#tr_white" + actionID).remove();
+                }
+
+                jQuery.ajax({
+                    type: "POST",
+                    data: {name: actionName, id : actionID},
+                });
+            });
+        });
+    });
+</script>
+<?php
+if (isset($_POST['name']) && isset($_POST['id']) ) {
+    echo $block->setNotification($_POST['name'], $_POST['id']);
+}
+?>
+

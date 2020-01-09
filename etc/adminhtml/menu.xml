@@ -1,0 +1,20 @@
+<?xml version="1.0"?>
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation=
+        "urn:magento:module:Magento_Backend:etc/menu.xsd">
+    <menu>
+        <add id="Magenest_Notification::notification" title="Notification" module="Magenest_Notification" sortOrder="52"
+             resource="Magenest_Notification::notification"/>
+        <add
+                id="Magenest_Notification::notification_section"
+                title="Notification Management"
+                module="Magenest_Notification"
+                sortOrder="50"
+                parent="Magenest_Notification::notification"
+                resource="Magenest_Notification::notification_section"
+        />
+        <add id="Magenest_Notification::magenestnotification" title="Notification" module="Magenest_Notification" sortOrder="20"
+             action="notification/notifications" resource="Magenest_Notification::magenestnotification"
+             parent="Magenest_Notification::notification_section"/>
+
+    </menu>
+</config>
