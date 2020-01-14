@@ -61,6 +61,9 @@
                     <item name="label" xsi:type="string" translate="true">Name</item>
                     <item name="formElement" xsi:type="string">input</item>
                     <item name="source" xsi:type="string">notification_details</item>
+                    <item name="validation" xsi:type="array">
+                        <item name="required-entry" xsi:type="boolean">true</item>
+                    </item>
                 </item>
             </argument>
         </field>
@@ -81,6 +84,9 @@
                     <item name="label" xsi:type="string" translate="true">Redirect Url</item>
                     <item name="formElement" xsi:type="string">input</item>
                     <item name="source" xsi:type="string">notification_details</item>
+                    <item name="validation" xsi:type="array">
+                        <item name="required-entry" xsi:type="boolean">true</item>
+                    </item>
                 </item>
             </argument>
         </field>

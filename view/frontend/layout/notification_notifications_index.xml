@@ -7,7 +7,7 @@
         </action>
     </referenceBlock>
     <referenceContainer name="content">
-        <block class="Magenest\Notification\Block\Test" name="testmodelblock" template="Magenest_Notification::test.phtml" cacheable="false" />
+        <block class="Magenest\Notification\Block\Notification" name="testmodelblock" template="Magenest_Notification::notification.phtml" cacheable="false" />
     </referenceContainer>
 </body>
 </page>

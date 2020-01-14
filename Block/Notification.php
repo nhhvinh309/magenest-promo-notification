@@ -5,7 +5,7 @@ namespace Magenest\Notification\Block;
 use Amazon\Core\Helper\ClientIp\Proxy;
 use Magento\Framework\View\Element\Template;
 
-class Test extends Template
+class Notification extends Template
 {
     protected $notificationFactory;
     protected $customerSession;
@@ -85,5 +85,4 @@ class Test extends Template
         }
         return;
     }
-
 }
